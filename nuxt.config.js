@@ -1,5 +1,7 @@
 
-export default {
+// eslint-disable-next-line nuxt/no-cjs-in-config
+module.exports = {
+  telemetry: false,
   /*
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
