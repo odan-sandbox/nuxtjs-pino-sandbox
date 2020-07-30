@@ -1,3 +1,5 @@
+import { ulid } from 'ulid'
+
 import express from 'express'
 import pino from 'express-pino-logger'
 
@@ -21,7 +23,10 @@ nuxt.hook('render:errorMiddleware', (app) => {
 
 const app = express()
 
-app.use(pino())
+app.use(pino({
+  genReqId: () => ulid(),
+  reqCustomProps: () => ({ date: new Date().toISOString() })
+}))
 
 app.use(async (req, res, next) => {
   await nuxt.ready()
